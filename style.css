@@ -1,0 +1,256 @@
+/* Importing the Poppins font from Google Fonts */
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" );
+
+/* Applying global styles to all elements */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Nunito", sans-serif; /* Font for the entire document */
+}
+
+/* Styling the body */
+body {
+    display: flex; /* Using Flexbox for centering */
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+    min-height: 100vh; /* Ensures the body takes up the full height of the viewport */
+    background-image: url('images/background.jpg'); /* Set a background image */
+    background-size: cover; /* Makes the background image cover the entire area */
+    background-position: center; /* Centers the background image */
+}
+
+/* Styling for the container element */
+.container {
+    position: relative;
+    width: 400px; /* Set the width of the container */
+    height: 100px; /* Height of the container */
+    background: rgba(255, 255, 255, .1); /* Semi-transparent background color */
+    backdrop-filter: blur(30px); /* Adds a blur effect behind the container */
+    border: 2px solid rgba(255, 255, 255, .2); /* Light border around the container */
+    border-radius: 16px; /* Rounded corners */
+    padding: 20px;
+    color: #fff; /* White text color */
+    transition: height .3s ease, transform .3s ease; /* Transition for both height and transform */
+    transform: translateY(0);
+}
+
+/* Styling the search box inside the container */
+.search-box {
+    position: relative;
+    width: 100%; /* Take up full width */
+    height: 55px; /* Set height */
+    display: flex; /* Flexbox for alignment */
+    align-items: center; /* Centers the content vertically */
+}
+
+/* Styling the search icon inside the search box */
+.search-box i {
+    position: absolute;
+    left: 10px; /* Positioning the icon to the left */
+    font-size: 28px; /* Icon size */
+}
+
+/* Styling the input field inside the search box */
+.search-box input {
+    position: absolute;
+    width: 100%; /* Full width input */
+    height: 100%; /* Full height input */
+    background: transparent; /* Transparent background */
+    border: 2px solid rgba(255, 255, 255, 0.5); /* Light border around input */
+    outline: none; /* Removes default outline on focus */
+    border-radius: 10px; /* Rounded corners for input */
+    font-size: 22px; /* Font size */
+    color: #fff; /* White text color */
+    font-weight: 500; /* Semi-bold font weight */
+    text-transform: uppercase; /* Uppercase text */
+    padding: 0 48px 0 42px; /* Padding to avoid text overlapping with the icon */
+}
+
+/* Placeholder styling for the input */
+.search-box input::placeholder {
+    color: #fff; /* White color for placeholder */
+    text-transform: capitalize; /* Capitalize each word in the placeholder */
+}
+
+/* Styling the search button inside the search box */
+.search-box button {
+    position: absolute;
+    right: 0;
+    width: 40px;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 28px;
+    color: #fff;
+    padding: 0 30px 0 5px;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease, border-radius 0.2s ease;
+    border-radius: 4px;
+}
+
+.search-box button:hover {
+    
+    transform: scale(1.2);
+    
+    border-radius: 50%;
+}
+
+
+/* Styling the weather box */
+.weather-box {
+    text-align: center; /* Center align the content */
+    margin: 40px 0; /* Margin around the weather box */
+}
+
+/* Initial hidden state for elements */
+.weather-box,
+.weather-details,
+.not-found {
+    visibility: hidden; /* Hide the elements by default */
+    opacity: 0; /* Start as invisible */
+    transform: translateY(30px); /* Start slightly below the original position */
+}
+
+/* Visible state when the active class is added */
+.weather-box.active,
+.weather-details.active,
+.not-found.active {
+    visibility: visible; /* Make the elements visible */
+    opacity: 1; /* Full opacity */
+    transform: translateY(0); /* Reset the translation to the normal position */
+    transition: visibility 3s, opacity 2s ease, transform 1s ease; /* Smooth transition for visibility, opacity, and transform */
+}
+
+/* Styling for the box inside the weather and not-found sections */
+.weather-box .box,
+.not-found .box {
+    transform: translateY(-100%); /* Initially hide the box by translating it upwards */
+}
+
+/* When the active class is added, the box slides into view */
+.weather-box.active .box,
+.not-found.active .box {
+    transform: translateY(0%); /* Reset the translation to 0% */
+    transition: transform 1s ease; /* Smooth 1-second transition for transform */
+}
+
+/* Styling the weather image inside the weather box */
+.weather-box img {
+    width: 60%; /* Image takes 60% width */
+}
+
+/* Styling for the temperature text in the weather box */
+.weather-box .temperature {
+    position: relative;
+    font-size: 64px; /* Large font size for temperature */
+    line-height: 1; /* Single line height */
+    font-weight: 700; /* Bold text */
+    margin: 20px 0 6px -30px; /* Margin adjustments */
+}
+
+/* Styling for the temperature units (e.g., Celsius or Fahrenheit) */
+.weather-box .temperature span {
+    position: absolute;
+    font-size: 24px; /* Font size for the unit */
+    margin-left: 4px; /* Small left margin */
+}
+
+/* Description text styling */
+.weather-box .description {
+    font-size: 22px; /* Font size */
+    font-weight: 500; /* Semi-bold */
+    text-transform: capitalize; /* Capitalize description */
+}
+
+/* Styling the weather details section */
+.weather-details {
+    position: absolute;
+    bottom: 40px; /* Position at the bottom */
+    left: 0;
+    width: 100%; /* Full width */
+    padding: 0 20px; /* Padding around the details */
+    display: flex; /* Flex layout for the details */
+}
+
+/* Humidity and wind styling inside weather details */
+.weather-details .humidity,
+.weather-details .wind {
+    display: flex; /* Flex layout for these items */
+    align-items: center; /* Vertically align items */
+    width: 50%; /* Each takes up 50% width */
+    transform: translateY(0); /* Initially hidden (move upwards) */
+}
+
+/* When active class is added, the humidity and wind sections slide into view */
+.weather-details.active .humidity,
+.weather-details.active .wind {
+    transform: translateY(0); /* Translate to original position for smooth reveal */
+    transition: transform 1s ease; /* Smooth transition for transform */
+    transition-delay: 1s; /* Delay the transition by 1 second for smooth sequencing */
+}
+
+/* Additional styling for the humidity section */
+.weather-details .humidity {
+    padding-left: 20px; /* Left padding */
+    justify-content: flex-start; /* Align content to the left */
+}
+
+/* Additional styling for the wind section */
+.weather-details .wind {
+    padding-right: 20px; /* Right padding */
+    justify-content: flex-end; /* Align content to the right */
+}
+
+/* Icon styling in weather details (humidity/wind) */
+.weather-details i {
+    font-size: 56px; /* Icon size */
+    margin-right: 10px; /* Right margin for spacing */
+}
+
+/* Text styling for the weather details */
+.weather-details span {
+    display: inline-block; /* Inline-block for text elements */
+    font-size: 22px; /* Font size */
+    font-weight: 500; /* Semi-bold font weight */
+}
+
+/* Paragraph styling in the weather details */
+.weather-details p {
+    font-size: 14px; /* Smaller font size */
+    font-weight: 500; /* Semi-bold */
+}
+
+/* Styling for the not-found section (e.g., when no data is found) */
+.not-found {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%; /* Full width */
+    text-align: center; /* Center the content */
+    margin-top: 110px; /* Margin from top */
+}
+
+/* Styling for the image inside the not-found section */
+.not-found img {
+    width: 65%; /* Image width */
+}
+
+/* Styling for the paragraph inside the not-found section */
+.not-found p {
+    font-size: 22px; /* Font size */
+    font-weight: 500; /* Semi-bold font weight */
+    margin-top: 12px; /* Top margin */
+}
+
+.footer {
+    position: fixed; /* Fix the position */
+    bottom: 10px; /* Distance from the bottom */
+    right: 10px; /* Distance from the right */
+    color: #ebebeb; /* Text color */
+    font-size: 14px; /* Font size */
+    font-family: 'Poppins', sans-serif; /* Font family */
+    opacity: 0.7; /* Slight transparency */
+    z-index: 1000;
+}
