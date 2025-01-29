@@ -23,7 +23,7 @@ body {
 /* Styling for the container element */
 .container {
     position: relative;
-    width: 38px; /* Set the width of the container */
+    width: 380px; /* Set the width of the container */
     height: 100px; /* Height of the container */
     background: rgba(255, 255, 255, .1); /* Semi-transparent background color */
     backdrop-filter: blur(30px); /* Adds a blur effect behind the container */
